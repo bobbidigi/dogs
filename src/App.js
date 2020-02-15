@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './index.css'
-import useInput from './utils/useInput'
+import {useLocalStorage} from './utils/useInput'
 
 
 function App(props) {
   const [data, setData] = useState([]);
-  const [breed, setBreed] = useInput("husky");
+  const [breed, setBreed] = useLocalStorage("breed", "husky");
 
   const handleChange = event => {
     setBreed(event.target.value);
