@@ -25,7 +25,7 @@ function App(props) {
   }, [breed]);
 
   return (
-    <div>
+    <div className="app">
       <header>
         <h1>DOGGIES</h1>
         <select value={breed} onChange={handleChange}>
