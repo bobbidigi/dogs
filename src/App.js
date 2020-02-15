@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './index.css'
+import useInput from './utils/useInput'
 
 
 function App(props) {
   const [data, setData] = useState([]);
-  const [breed, setBreed] = useState("husky");
+  const [breed, setBreed] = useInput("husky");
 
   const handleChange = event => {
     setBreed(event.target.value);
@@ -28,11 +29,15 @@ function App(props) {
     <div className="app">
       <header>
         <h1>DOGGIES</h1>
-        <select value={breed} onChange={handleChange}>
-          <option value="husky">Husky</option>
-          <option value="beagle">Beagle</option>
-          <option value="corgi">Corgi</option>
-        </select>
+        <div className="select">
+          <select value={breed} onChange={handleChange}>
+            <option selected disabled>Choose a breed</option>
+            <option value="husky">Husky</option>
+            <option value="beagle">Beagle</option>
+            <option value="corgi">Corgi</option>
+          </select>
+        </div>
+        
       </header>
       
 
