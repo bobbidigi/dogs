@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import './index.css'
+
 
 function App(props) {
   const [data, setData] = useState([]);
@@ -11,7 +13,7 @@ function App(props) {
 
   const fetchDogImages = () => {
     axios
-      .get(`https://dog.ceo/api/breed/${breed}/images/random/1`)
+      .get(`https://dog.ceo/api/breed/${breed}/images/random/5`)
       .then(res => {
         console.log(res.data.message);
         setData(res.data.message);
@@ -24,19 +26,21 @@ function App(props) {
 
   return (
     <div>
-      <h1>DOGGYS</h1>
+      <header>
+        <h1>DOGGIES</h1>
+        <select value={breed} onChange={handleChange}>
+          <option value="husky">Husky</option>
+          <option value="beagle">Beagle</option>
+          <option value="corgi">Corgi</option>
+        </select>
+      </header>
+      
 
-      <select value={breed} onChange={handleChange}>
-        <option value="husky">Husky</option>
-        <option value="beagle">Beagle</option>
-        <option value="corgi">Corgi</option>
-      </select>
-
-      <div>
+      <ul className="dogs">
         {data.map((image, index) => {
-          return <img key={index} src={image} alt="dog" />;
+          return <li><img key={index} src={image} alt="dog" /></li>;
         })}
-      </div>
+      </ul>
     </div>
   );
 }
