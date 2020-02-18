@@ -5,7 +5,7 @@ import {useLocalStorage} from './utils/useInput'
 
 
 function App(props) {
-  const [data, setData] = useState([]);
+  const [data, setData] = useLocalStorage("data", []);
   const [breed, setBreed] = useLocalStorage("breed", "husky");
 
   const handleChange = event => {
